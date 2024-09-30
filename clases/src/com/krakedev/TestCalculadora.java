@@ -7,6 +7,7 @@ public class TestCalculadora {
 		int resultadoSuma;
 		int resultadoResta;
 		double resultadoMulti;
+		double resultadoDiv;
 		calcu = new Calculadora();
 		
 		resultadoSuma = calcu.sumar(5, 3);
@@ -17,6 +18,9 @@ public class TestCalculadora {
 		
 		resultadoMulti = calcu.multiplicar(24.34, 3.15);
 		System.out.println("Multiplicacion restulado es: "+ resultadoMulti);
+		
+		resultadoDiv = calcu.dividir(10, 2);
+		System.out.println("Division resultado es:" + resultadoDiv);
 	}
 
 }
