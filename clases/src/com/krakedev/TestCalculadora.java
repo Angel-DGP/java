@@ -26,6 +26,7 @@ public class TestCalculadora {
 		resultadoProm = calcu.promediar(10, 9.1, 8.2);
 		System.out.println("Promedio resultado es: " + resultadoProm);
 		
+		calcu.mostrarResultado();
 	}
 
 }
