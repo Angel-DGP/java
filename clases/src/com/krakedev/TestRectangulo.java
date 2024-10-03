@@ -17,8 +17,8 @@ public class TestRectangulo {
 		areaR1 = r1.calcularArea();
 		areaR2 = r2.calcularArea();
 		
-		int perimetroR1=r1.calcularPerimetro();
-		int perimetroR2=r2.calcularPerimetro();
+		double perimetroR1=r1.calcularPerimetro();
+		double perimetroR2=r2.calcularPerimetro();
 		
 		System.out.println("El area de R1 es: " + areaR1);
 		System.out.println("El area de R2 es: " + areaR2);
