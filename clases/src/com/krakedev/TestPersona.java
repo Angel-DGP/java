@@ -5,19 +5,19 @@ public class TestPersona {
 	public static void main(String[] args) {
 		Persona p; 
 		p=new Persona();
-		System.out.println("nombre:" + p.nombre);
-		System.out.println("edad:" + p.edad);
-		System.out.println("estatura:"+ p.estatura);
+		System.out.println("nombre:" + p.getNombre());
+		System.out.println("edad:" + p.getEdad());
+		System.out.println("estatura:"+ p.getEstatura());
 		
-		p.nombre="Mario";
-		p.edad=45;
-		p.estatura=1.56;
+		p.setNombre("Mario");
+		p.setEdad(45);
+		p.setEstatura(1.56);
 		
 		System.out.println("----------------------------------");
 		
-		System.out.println("nombre:" + p.nombre);
-		System.out.println("edad:" + p.edad);
-		System.out.println("estatura:"+ p.estatura);
+		System.out.println("nombre:" + p.getNombre());
+		System.out.println("edad:" + p.getEdad());
+		System.out.println("estatura:"+ p.getEstatura());
 	
 	}
 

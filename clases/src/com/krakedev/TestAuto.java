@@ -8,23 +8,23 @@ public class TestAuto {
 		Auto auto2;
 		auto2 = new Auto();
 		
-		auto1.marca = "Ford";
-		auto1.anio = 2022;
-		auto1.precio = 35657.65;
+		auto1.setMarca("Ford");
+		auto1.setAnio(2022);
+		auto1.setPrecio(35657.65);
 		
-		System.out.println("Marca auto1 :" + auto1.marca);
-		System.out.println("Anio auto1 :" + auto1.anio);
-		System.out.println("Precio auto1 :" + auto1.precio);
+		System.out.println("Marca auto1 :" + auto1.getMarca());
+		System.out.println("Anio auto1 :" + auto1.getAnio());
+		System.out.println("Precio auto1 :" + auto1.getPrecio());
 	
 		System.out.println("-----------------");
 		
-		auto2.marca = "Chevrolet";
-		auto2.anio = 2022;
-		auto2.precio = 32997.95;
+		auto2.setMarca("Chevrolet");
+		auto2.setAnio(2022);
+		auto2.setPrecio(32997.95);
 		
-		System.out.println("Marca auto2 :" + auto2.marca);
-		System.out.println("Anio auto2 :" + auto2.anio);
-		System.out.println("Precio auto2 :" + auto2.precio);
+		System.out.println("Marca auto2 :" + auto2.getMarca());
+		System.out.println("Anio auto2 :" + auto2.getAnio());
+		System.out.println("Precio auto2 :" + auto2.getPrecio());
 	}
 
 }

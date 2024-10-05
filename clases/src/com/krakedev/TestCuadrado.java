@@ -4,13 +4,13 @@ public class TestCuadrado {
 
 	public static void main(String[] args) {
 		Cuadrado C1 = new Cuadrado();
-		C1.lado = 4;
+		C1.setLado(4);
 		
 		Cuadrado C2 = new Cuadrado();
-		C2.lado = 3;
+		C2.setLado(3);
 		
 		Cuadrado C3 = new Cuadrado();
-		C3.lado = 2;
+		C3.setLado(2);
 		
 		double areaC1 = C1.calcularArea();
 		double perimetroC1 = C1.calcularPerimetro();
