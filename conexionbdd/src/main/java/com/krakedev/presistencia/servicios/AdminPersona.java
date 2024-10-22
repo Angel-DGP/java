@@ -174,4 +174,37 @@ public class AdminPersona {
 		
 		return pIterado;
 	}
+	public static ArrayList<Persona> buscarPorApellido(String Apellido) throws Exception {
+		ArrayList<Persona> personasApellido = new ArrayList<Persona>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ConexionBDD.conectar();
+			ps = con.prepareStatement("SELECT * FROM PERSONAS WHERE APELLIDO like ?");
+			ps.setString(1, "%"+Apellido+"%");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Persona pIterado = new Persona();
+				pIterado.setCedula(rs.getString("cedula"));
+				pIterado.setNombre(rs.getString("nombre"));
+				pIterado.setApellido(rs.getString("apellido"));
+				personasApellido.add(pIterado);
+			}
+		} catch (Exception e) {
+			System.out.println("ERROR EN INFRAESTRUCTURA: " + e.getMessage());
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				LOGGER.error("ERROR IN SQLEXCEPTION", e);
+				throw new Exception("ERROR CON LA BASE DE DATOS");
+
+			}
+		}
+		
+		
+		return personasApellido;
+	}
 }
