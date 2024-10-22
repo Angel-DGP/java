@@ -2,8 +2,10 @@ package com.krakedev.presistencia.servicios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -106,5 +108,70 @@ public class AdminPersona {
 
 			}
 		}
+	}
+	public static ArrayList<Persona> buscarPorNombre(String nombreBusqueda) throws Exception{
+		ArrayList<Persona> personasEncontradas = new ArrayList<Persona>();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		try {
+			con = ConexionBDD.conectar();
+			ps = con.prepareStatement("SELECT * from personas where nombre like ?");
+			ps.setString(1,"%"+ nombreBusqueda + "%");
+			
+			rs = ps.executeQuery();
+			while(rs.next()){
+				Persona pIterado = new Persona();
+				pIterado.setCedula(rs.getString("cedula"));
+				pIterado.setNombre(rs.getString("nombre"));
+				pIterado.setApellido(rs.getString("apellido"));
+				personasEncontradas.add(pIterado);
+			}
+			
+		} catch (Exception e) {
+			LOGGER.error("ERROR AT INSERT", e);
+			throw new Exception("ERROR AL CONSULTAR POR NOMBRE");
+
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				LOGGER.error("ERROR IN SQLEXCEPTION", e);
+				throw new Exception("ERROR CON LA BASE DE DATOS");
+
+			}
+		}
+		return personasEncontradas;
+	}
+	public static Persona buscarPorCedula(String Cedula) throws Exception {
+		Persona pIterado = new Persona();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			con = ConexionBDD.conectar();
+			ps = con.prepareStatement("SELECT * FROM PERSONAS WHERE CEDULA =?");
+			ps.setString(1, Cedula);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				pIterado.setCedula(rs.getString("cedula"));
+				pIterado.setNombre(rs.getString("nombre"));
+				pIterado.setApellido(rs.getString("apellido"));
+			}
+		} catch (Exception e) {
+			System.out.println("ERROR EN INFRAESTRUCTURA: " + e.getMessage());
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				LOGGER.error("ERROR IN SQLEXCEPTION", e);
+				throw new Exception("ERROR CON LA BASE DE DATOS");
+
+			}
+		}
+		
+		
+		return pIterado;
 	}
 }
